@@ -1,0 +1,13 @@
+name: pasajero_sos_monitoreo
+title: pasajero_sos_monitoreo
+username:
+account: nefesh
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1283305
+bundleId: 4600095
+url: https://nefesh.shinyapps.io/pasajero_sos_monitoreo/
+when: 1621035595.98697
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: server - copia-14mayo20211451.R|server - copia-19marzo2020-1105pm.R
