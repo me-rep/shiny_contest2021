@@ -10,42 +10,25 @@
 library(shiny)
 library(shinydashboard)
 library(leaflet)
-library(shinyjs)#para notificaciones
+library(shinyjs)
 library(RMySQL)
-library(DT)#for show dt
-library(dplyr)#for filter dt to map
-#library(shinyWidgets)#for styled checkbox | actually not used
-library(shinycssloaders) #for spinner
-library(hms)#make the new time =actual - two 
-library(stringr)#for str_split 
-#library(htmltools)
-####### to kill connections
-killDbConnections <- function () {
-  
-  all_cons <- dbListConnections(MySQL())
-  
-  print(all_cons)
-  
-  for(con in all_cons)
-    +  dbDisconnect(con)
-  
-  print(paste(length(all_cons), " connections killed."))
-  
-}
+library(DT)
+library(dplyr)
+library(shinycssloaders) 
+library(hms)
+library(stringr)
 
-# Define UI for application that draws a histogram
+
 shinyUI(fluidPage(
   
   # Application title
   
-  #titlePanel(h1(align="center",tags$em(p("Monitoreo de asaltos en buses@Tiempo Real",class='fa fa-cloud',align="middle",style="background-color:#97bddb;color:#fff;height:75px;")))),
-  #titlePanel(h1(id="title","Sistema Pasajero_SOS:Monitoreo")),
+  
   titlePanel("Sistema Pasajero_SOS:Monitoreo"),
   tags$head(
     tags$style(type="text/css", ".inline label{ display: table-cell; text-align: left; vertical-align: middle; } 
                .inline .form-group{display: table-row;}"),
-    #tags$style("#toggleAccessGroup{padding:0px;text-align:center;}"),
-    #tags$style("#toggleAccessGroup{vertical-algin:middle;text-align:center;}"),
+    
     tags$style(
       HTML('#title {
            color: black;
@@ -62,16 +45,9 @@ shinyUI(fluidPage(
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
     sidebarPanel(id="title",
-      #box(
-        #useShinyjs(),
-        #checkboxInput("dha", "Drop Higher Accuracy", FALSE),
-        #useShinyjs(),
-        #checkboxInput("dpu", "Drop PopUps", FALSE)),
-        #helpText("Bienvenido!")
-        #)
-      #h1(id="title","HOLa"),
+      
       h1(tags$em(p("Monitoreo de asaltos en buses@Tiempo Real",class='fa fa-cloud',align="middle",style="background-color:#97bddb;color:#fff;height:75px;"))),
-      #h1(align="center",tags$em(p("Monitoreo de asaltos en buses@Tiempo Real",class='fa fa-cloud',align="middle",style="background-color:#97bddb;color:#fff;height:75px;")))
+      
        # ,
       
       
@@ -91,22 +67,16 @@ shinyUI(fluidPage(
         actionButton("lof",label = "Salir",icon =icon("power-off","fa-1x",lib="font-awesome"),class = "btn btn-secondary btn-xs")#btn-sm btn-xs
 
       ))
-      #box(
-      #    useShinyjs(),
-      #    checkboxInput("dha", "Quitar alta Accuracy", FALSE),
-      #    useShinyjs(),
-      #    checkboxInput("dpu", "Quitar PopUps", FALSE))
+      
     ),
     
-    # Show a plot of the generated distribution
+    
     mainPanel(
       #h1(tags$em(p("Monitoring theft on bus@Real Time",class='fa fa-cloud',align="middle",style="background-color:#97bddb;color:#fff;height:75px;"))),
 
       useShinyjs(),
       checkboxInput("dha", "Quitar Accuracy grande", FALSE),
-      #useShinyjs(),
-      #checkboxInput("dpu", "Quitar PopUps", FALSE),
-      #shinyjs::hidden(div(id="alc1",
+      
       uiOutput("alm_signs"),
       leafletOutput("mon_map")#%>%withSpinner(color="#00394d",type=4)
       #))
