@@ -31,6 +31,148 @@ createConnection <- function() {
   
 }
 
+updateDf <- function(df,updt,updd,n_alrt) {
+  
+  aux_df<-df
+  
+    if(n_alrt==1){
+    auxt_c<-assign_LT(sample(c("r","o","b"),1),FALSE)
+    aux_df$time<-c(auxt_c)
+    aux_df$dt<-c(updd)
+    return(as.data.frame(aux_df))
+    
+  }
+  if(n_alrt==2){ 
+    aux_df<-generateData(aux_df,n_alrt)
+    aux_df$dt<-c(updd)
+    return(as.data.frame(aux_df))
+    
+  }
+  if(n_alrt==3){
+    aux_df<-generateData(aux_df,n_alrt)
+    aux_df$dt<-c(updd)
+    return(as.data.frame(aux_df))
+    
+    
+  }
+ 
+}
+generateDefault<-function(){
+  default_df<- data.frame(c_id=4,n_reg=76543211,lat=14.595995,lon=-90.5180138,ug="Mozilla/5.0 (Linux; Android 5.1; HUAWEI LUA-L03) A...",ip="190.148.53.102",time="15:56:07",dt="14/5/2021",br_name="Netscape",plat="Linux armv7",c_accuracy=26.2910003662109,heading="153.203201293945",c_altitud="NULL",c_altitud_acc="NULL",c_speed="0.246648341417313",scr_h=570,scr_w=320,scr_cd=24,stringsAsFactors = FALSE)
+  default_df<-bind_rows(default_df,data.frame(c_id=5,n_reg=76543211,lat=14.595107,lon=-90.517896,ug="Mozilla/5.0 (Linux; Android 5.1; HUAWEI LUA-L03) A...",ip="190.148.53.103",time="15:56:07",dt="14/5/2021",br_name="Netscape",plat="Linux armv7",c_accuracy=26.2910003662109,heading="153.203201293945",c_altitud="NULL",c_altitud_acc="NULL",c_speed="0.246648341417313",scr_h=570,scr_w=320,scr_cd=24,stringsAsFactors = FALSE))
+  default_df<-bind_rows(default_df,data.frame(c_id=6,n_reg=76543211,lat=14.5947822,lon=-90.5177992,ug="Mozilla/5.0 (Linux; Android 5.1; HUAWEI LUA-L03) A...",ip="190.148.53.103",time="15:56:07",dt="14/5/2021",br_name="Netscape",plat="Linux armv7",c_accuracy=26.2910003662109,heading="153.203201293945",c_altitud="NULL",c_altitud_acc="NULL",c_speed="0.246648341417313",scr_h=570,scr_w=320,scr_cd=24,stringsAsFactors = FALSE))
+  
+  return(default_df)
+  
+}
+generateData<-function(df,n_alrt){
+  
+  if(n_alrt==2){
+    
+    aux_df<- data.frame(c_id=4,n_reg=76543211,lat=14.623081,lon=-90.552081,ug="Mozilla/5.0 (Linux; Android 5.1; HUAWEI LUA-L03) A...",ip="190.148.53.102",time="15:56:07",dt="14/5/2021",br_name="Netscape",plat="Linux armv7",c_accuracy=16.6509990692139,heading="153.203201293945",c_altitud="NULL",c_altitud_acc="NULL",c_speed="0.246648341417313",scr_h=570,scr_w=320,scr_cd=24,stringsAsFactors = FALSE)
+    aux_df<-bind_rows(aux_df,data.frame(c_id=5,n_reg=76543211,lat=14.622588,lon=-90.550895,ug="Mozilla/5.0 (Linux; Android 5.1; HUAWEI LUA-L03) A...",ip="190.148.53.103",time="15:56:07",dt="14/5/2021",br_name="Netscape",plat="Linux armv7",c_accuracy=24.0370006561279,heading="153.203201293945",c_altitud="NULL",c_altitud_acc="NULL",c_speed="0.246648341417313",scr_h=570,scr_w=320,scr_cd=24,stringsAsFactors = FALSE))
+    aux_df<-bind_rows(aux_df,data.frame(c_id=6,n_reg=76543211,lat=14.621441,lon=-90.548964,ug="Mozilla/5.0 (Linux; Android 5.1; HUAWEI LUA-L03) A...",ip="190.148.53.103",time="15:56:07",dt="14/5/2021",br_name="Netscape",plat="Linux armv7",c_accuracy=18.2280006408691,heading="153.203201293945",c_altitud="NULL",c_altitud_acc="NULL",c_speed="0.246648341417313",scr_h=570,scr_w=320,scr_cd=24,stringsAsFactors = FALSE))
+    
+    s1<-sample(c("r","o","b"),1)
+    s2<-sample(c("r","o","b"),1)
+    elt1<-assign_LT(s1,FALSE)
+    elt2<-assign_LT(s2,FALSE)
+    
+    elt2<-ifelse(elt1==elt2,assign_LT(s2,TRUE),elt2)
+    
+    aux_df$time<-c(elt2)
+    df$time<-c(elt1)
+    
+    
+    
+    
+    df<-bind_rows(df,aux_df)
+    return(as.data.frame(df))
+    
+  }
+  
+  if(n_alrt==3){
+    
+    aux_df<- data.frame(c_id=4,n_reg=76543211,lat=14.623081,lon=-90.552081,ug="Mozilla/5.0 (Linux; Android 5.1; HUAWEI LUA-L03) A...",ip="190.148.53.102",time="15:56:07",dt="14/5/2021",br_name="Netscape",plat="Linux armv7",c_accuracy=16.6509990692139,heading="153.203201293945",c_altitud="NULL",c_altitud_acc="NULL",c_speed="0.246648341417313",scr_h=570,scr_w=320,scr_cd=24,stringsAsFactors = FALSE)
+    aux_df<-bind_rows(aux_df,data.frame(c_id=5,n_reg=76543211,lat=14.622588,lon=-90.550895,ug="Mozilla/5.0 (Linux; Android 5.1; HUAWEI LUA-L03) A...",ip="190.148.53.103",time="15:56:07",dt="14/5/2021",br_name="Netscape",plat="Linux armv7",c_accuracy=24.0370006561279,heading="153.203201293945",c_altitud="NULL",c_altitud_acc="NULL",c_speed="0.246648341417313",scr_h=570,scr_w=320,scr_cd=24,stringsAsFactors = FALSE))
+    aux_df<-bind_rows(aux_df,data.frame(c_id=6,n_reg=76543211,lat=14.621441,lon=-90.548964,ug="Mozilla/5.0 (Linux; Android 5.1; HUAWEI LUA-L03) A...",ip="190.148.53.103",time="15:56:07",dt="14/5/2021",br_name="Netscape",plat="Linux armv7",c_accuracy=18.2280006408691,heading="153.203201293945",c_altitud="NULL",c_altitud_acc="NULL",c_speed="0.246648341417313",scr_h=570,scr_w=320,scr_cd=24,stringsAsFactors = FALSE))
+    
+    aux2_df<- data.frame(c_id=4,n_reg=76543211,lat=14.641100,lon=-90.512081,ug="Mozilla/5.0 (Linux; Android 5.1; HUAWEI LUA-L03) A...",ip="190.148.53.102",time="15:56:07",dt="14/5/2021",br_name="Netscape",plat="Linux armv7",c_accuracy=45.5999984741211,heading="153.203201293945",c_altitud="NULL",c_altitud_acc="NULL",c_speed="0.246648341417313",scr_h=570,scr_w=320,scr_cd=24,stringsAsFactors = FALSE)
+    aux2_df<-bind_rows(aux2_df,data.frame(c_id=5,n_reg=76543211,lat=14.642125,lon=-90.512550,ug="Mozilla/5.0 (Linux; Android 5.1; HUAWEI LUA-L03) A...",ip="190.148.53.103",time="15:56:07",dt="14/5/2021",br_name="Netscape",plat="Linux armv7",c_accuracy=77.5999984741211,heading="153.203201293945",c_altitud="NULL",c_altitud_acc="NULL",c_speed="0.246648341417313",scr_h=570,scr_w=320,scr_cd=24,stringsAsFactors = FALSE))
+    aux2_df<-bind_rows(aux2_df,data.frame(c_id=6,n_reg=76543211,lat=14.642426,lon=-90.513231,ug="Mozilla/5.0 (Linux; Android 5.1; HUAWEI LUA-L03) A...",ip="190.148.53.103",time="15:56:07",dt="14/5/2021",br_name="Netscape",plat="Linux armv7",c_accuracy=23.2530002593994,heading="153.203201293945",c_altitud="NULL",c_altitud_acc="NULL",c_speed="0.246648341417313",scr_h=570,scr_w=320,scr_cd=24,stringsAsFactors = FALSE))
+    
+    
+    
+    s1<-sample(c("r","o","b"),1)
+    s2<-sample(c("r","o","b"),1)
+    s3<-sample(c("r","o","b"),1)
+    elt1<-assign_LT(s1,FALSE)
+    elt2<-assign_LT(s2,FALSE)
+    elt3<-assign_LT(s3,FALSE)
+    
+    
+    elt2<-ifelse(elt1==elt2,assign_LT(s2,TRUE),elt2)
+    elt3<-ifelse(elt1==elt3,assign_LT(s3,TRUE),elt3)
+    elt3<-ifelse(elt2==elt3,assign_LT(s3,TRUE),elt3)
+    
+    
+    aux_df$time<-c(elt2)
+    aux2_df$time<-c(elt3)
+    df$time<-c(elt1)
+    
+    df$c_accuracy[3]<-c(600.291000366211)
+    
+    
+    df<-bind_rows(df,aux_df)
+    df<-bind_rows(df,aux2_df)
+    
+    
+    return(as.data.frame(df))
+    
+  }
+  
+}
+#Assign Lapsed Time
+assign_LT<-function(c_alrt,repeated){ 
+  if(!repeated){
+    if(c_alrt=="r"){
+      auxt<-Sys.time()-minutes(5) 
+      answ<-paste(hour(auxt),minute(auxt),trunc(second(auxt)),sep = ":")
+      return(answ)}
+    if(c_alrt=="o"){
+      auxt<-Sys.time()-minutes(35)
+      answ<-paste(hour(auxt),minute(auxt),trunc(second(auxt)),sep = ":")
+      
+      return(answ)}
+    if(c_alrt=="b"){
+      auxt<-Sys.time()-minutes(65) 
+      answ<-paste(hour(auxt),minute(auxt),trunc(second(auxt)),sep = ":")
+      
+      return(answ)}
+  }
+  
+  if(repeated){
+    if(c_alrt=="r"){
+      auxt<-Sys.time()-minutes(6) 
+      answ<-paste(hour(auxt),minute(auxt),trunc(second(auxt)),sep = ":")
+      
+      return(answ)}
+    if(c_alrt=="o"){
+      auxt<-Sys.time()-minutes(36)
+      answ<-paste(hour(auxt),minute(auxt),trunc(second(auxt)),sep = ":")
+      return(answ)}
+    if(c_alrt=="b"){
+      auxt<-Sys.time()-minutes(66) 
+      answ<-paste(hour(auxt),minute(auxt),trunc(second(auxt)),sep = ":")
+      
+      return(answ)}
+    
+  }
+  
+  
+  
+}
+
 
 shinyServer(function(input, output,session) {
   shinyjs::hide("dha")
@@ -42,6 +184,13 @@ shinyServer(function(input, output,session) {
                    shinyjs::toggle(id = "alc0", anim = TRUE))
 #
 #
+#To update the time from the device into the generated Data(example data)
+  observeEvent(input$ttd,{
+    n_alrt<-sample(c(1,2,3),1)
+    default_df<-generateDefault()
+    assaults_reported_df<<-updateDf(default_df,isolate(input$ttd),isolate(input$dtd),n_alrt)
+  })
+  
   observe({
   if(input$dpi=="sh-2021"){shinyjs::enable("ala")
     shinyjs::enable("lof")
@@ -94,7 +243,7 @@ shinyServer(function(input, output,session) {
         
         
         if(length(input$dtd)>0){
-          print("entrando al if del download de la db")
+          
           
           date_limit<-unlist(str_split(input$dtd,"/"))
           new_date=vector()
@@ -120,17 +269,17 @@ shinyServer(function(input, output,session) {
           
           print(paste("date is:",input$dtd))
           
-          print(start_date)
-          temp_download_two<-download_today_db(start_date) 
+          print(start_date)           
+          temp_download_two<-download_today_db(input$dtd) 
           
           df_download_r(temp_download_two%>%filter(as.hms(time)>=as.hms(start_time)))
-          print(df_download_r())
+          
           #Adding elapsed_time in order to get states on alerts
           temp_color_two<-df_download_r()%>%mutate(elapsed_time=as.numeric(difftime(as.hms(input$ttd),as.hms(time),units="min")))
           #test_dfh<-df%>%mutate(elapsed_time=as.numeric(difftime(as.hms("15:49:00"),as.hms(as.character(Name)),units="min")))
           temp_color_two$elapsed_state<-put_Color_State(temp_color_two)
           temp_color_two$elapsed_image<-put_Image_State(temp_color_two)
-          print(temp_color_two)
+          
           df_download_r(temp_color_two)
           #
           
@@ -182,9 +331,9 @@ shinyServer(function(input, output,session) {
       if(!input$dha){
         df_top_assaults<-df_download_r()
         
-        print(names(df_top_assaults))
+        
         df_top_assaults$micon<-as.factor(ifelse(df_top_assaults$c_id==4,"bus","bus_nst"))
-        print(str(df_top_assaults))
+        
         df_top_assaults$speed_km<-ifelse(df_top_assaults$c_speed!="null",as.numeric(df_top_assaults$c_speed)*3.6,NA)
         
         df_top_assaults<-df_top_assaults%>%mutate(to_show=paste(c_id,speed_km,"km/h",sep = " "))
@@ -306,6 +455,7 @@ shinyServer(function(input, output,session) {
 
   
   output$alm_signs <- renderUI({
+    if(nrow(df_download_r())>0){
     nred<-nrow(df_download_r()%>%filter(elapsed_state=="red"))/3
     norange<-nrow(df_download_r()%>%filter(elapsed_state=="orange"))/3
     nblack<-nrow(df_download_r()%>%filter(elapsed_state=="black"))/3
@@ -327,6 +477,7 @@ shinyServer(function(input, output,session) {
         )
       )
     )
+    }
     
   })
   ###Functions section
@@ -363,7 +514,7 @@ shinyServer(function(input, output,session) {
   
   #To put color to the circles radio | last two hour option
   check_elapsed<-function(df_to_work){
-    print(colnames(df_to_work))
+    
     if("elapsed_time"%in% colnames(df_to_work)){
       return(df_to_work$elapsed_state)
     }
